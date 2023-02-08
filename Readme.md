@@ -46,10 +46,14 @@ To select a group, enter the ID of the group.
 Some settings are on a by-group basis. Those settings then apply to all the ports inside the group.
 
 ### Edit Name
-Allows you to edit the Short Name and Long Name of a group.
+Allows you to edit the Short Name and Long Name of a group. The current short and long name are shown at the top.
+![Edit Name](/docs/editName.jpg)
 
 ### Edit ArtNet
-Allows you to edit the ArtNET-Address of all ports in the group. There are two ways to edit the Address:
+Allows you to edit the ArtNET-Address of all ports in the group.
+![Edit ArtNET](/docs/editArtNET.jpg)
+
+There are two ways to edit the Address:
 1. By using absolute values. In this case, you will enter a value between 0 and 32767 and the tool will calculate the Network, Subnet and Universe values for you. After your first entry, the range will be limited, as the Network and Subnet apply to all ports and thus limit the range of available values.
 2. By setting the network, subnet and universe explicitly. In this case you can set all parts by hand and do the calculation yourself if neccessary.
 
@@ -68,6 +72,8 @@ You can change the failover-mode of the device between Hold, Zero, Full and Scen
 - Record will store the current channel values for use in the `Scene`-Mode
 
 ### Serial commands
+![Serial Commands](/docs/deviceInfo_serial.jpg)
+
 If the device is detected to have an associated serial interface, some additional commands will be available:
 - Power-Cycle device will issue a soft-reset and reboot the device
 - Reboot the device into bootloader mode
@@ -76,6 +82,8 @@ If the device is detected to have an associated serial interface, some additiona
 - Configure the static IP settings and mode
 
 ## Changing Port settings
+![Port Settings](/docs/deviceInfo_port.jpg)
+
 The port settings can be changed by typing the respective command. As all the port settings are only toggles, there is no special screen attached to those settings. If a setting is not supported to be changed it will be grayed out, but you can try to trigger it nonetheless. If the App thinks a setting is supported it may in fact be not. Just try to change it.
 
 ### Toggle RDM

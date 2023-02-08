@@ -9,9 +9,13 @@ For my own implementation for an USB-ArtNET Device it also supports a backup ser
 Please report any Issues and Bugs you find with this software. Please include your device and if possible a wireshark capture of the bug with the `artnet`-Filter active.
 
 ## Device overview
+![Device Overview](/docs/overview.jpg)
+
 This screen shows a list of all network devices on all network interfaces. To view a device, type the index. To refresh the list, type `r`. `Squawk!` shows whether any group inside the device has the `Squawking`-Flag set. Some Devices support this feature to find the Network device in the Software quickly by pressing a button on the physical device.
 
 ## Device Info
+![Device Info Screen](/docs/deviceInfo.jpg)
+
 The device info screen will show all Information given in the ArtPoll-Reply packets of a device. It will first list all the inputs and outputs of that device, sorted by their reply-group (A device can send multiple poll-replies to group ports together). A green entry means the port is currently alive and sending/receiving data. A red port means there was either an output short detected or input receive errors flagged.
 
 From left to right the output stats show:
@@ -32,6 +36,7 @@ For inputs:
 The Version group shows some Version info taken from the ArtPollReply-Packet.
 
 The Status shows the three status flags in the reply. If multiple groups are shown, it will give a warning if the settings differ by group and only show the first group. If no warning is shown, all groups have the same status flags.
+![Status differs](/docs/deviceInfo_status.jpg)
 
 And lastly it will show any available Node-Reports of the groups, containing some device specific status messages.
 

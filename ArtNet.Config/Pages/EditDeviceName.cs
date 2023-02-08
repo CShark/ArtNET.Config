@@ -1,5 +1,4 @@
 ﻿using ArtNet.Config.ArtNet;
-using Haukcode.ArtNet.ArtNet.Packets;
 using Haukcode.ArtNet.Packets;
 
 namespace ArtNet.Config.Pages {

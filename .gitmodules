@@ -1,0 +1,4 @@
+[submodule "Haukcode.ArtNet"]
+	path = Haukcode.ArtNet
+	url = git@github.com:CShark/Haukcode.ArtNet.git
+	branch = master

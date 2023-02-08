@@ -81,6 +81,8 @@ If the device is detected to have an associated serial interface, some additiona
 - Configure the internal DHCP-Server
 - Configure the static IP settings and mode
 
+The serial interface is only meant to be used with [another project of mine](https://github.com/CShark/usb_dmx), so it won't show up in most cases. It is a kind of backup for when you brick your device and can't access it over the network anymore.
+
 ## Changing Port settings
 ![Port Settings](/docs/deviceInfo_port.jpg)
 

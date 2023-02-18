@@ -12,6 +12,7 @@ namespace ArtNet.Config.Pages {
         private bool _canSwitchArtNET = false;
         private bool _canSwitchMode = false;
         private bool _canSwitchFailover = false;
+        private bool _allowRefresh = true;
 
         private Dictionary<int, string> _portProtocols = new Dictionary<int, string>() {
             [0] = "DMX512",
@@ -36,9 +37,10 @@ namespace ArtNet.Config.Pages {
             }
         }
 
-        public override bool AllowRefresh => true;
+        public override bool AllowRefresh => _allowRefresh;
 
         protected override IPage? HandleInputInternal(string? input) {
+            _allowRefresh = false;
             LastErr = "";
             var _pollReply = _device.PortReplies.FirstOrDefault(x => x.BindIndex == _bindIndex);
 
@@ -132,11 +134,9 @@ namespace ArtNet.Config.Pages {
                             _device.Serial?.ResetConfig();
                             break;
                         case "-d":
-                            // Edit DHCP Server
-                            break;
+                            return new SerialDhcp(this,_device);
                         case "-ip":
-                            // Edit Static IP / Mode
-                            break;
+                            return new SerialIp(this, _device);
                         default:
                             var cmd = input.Substring(0, 1);
                             if (byte.TryParse(input.Substring(1), out idx)) {
@@ -174,6 +174,7 @@ namespace ArtNet.Config.Pages {
                 }
             }
 
+            _allowRefresh = true;
             return this;
         }
 
@@ -364,8 +365,9 @@ namespace ArtNet.Config.Pages {
             status2.AddEntry($"{"Supports DHCP:",-30}" + ((replies[0].Status2 & 0x04) != 0 ? "■" : "-"));
             status2.AddEntry($"{"Uses 15-bit Port Adressing:",-30}" + ((replies[0].Status2 & 0x08) != 0 ? "■" : "-"), null, 1);
             status2.AddEntry($"{"Squawking:",-30}" + ((replies[0].Status2 & 0x20) != 0 ? "■" : "-"));
-            status2.AddEntry($"{"sACN and ArtNET:",-30}" + ((replies[0].Status2 & 0x40) != 0 ? "■" : "-"), null, 1);
+            status2.AddEntry($"{"sACN and ArtNET:",-30}" + ((replies[0].Status2 & 0x10) != 0 ? "■" : "-"), null, 1);
             status2.AddEntry($"{"RDM switchable:",-30}" + ((replies[0].Status2 & 0x80) != 0 ? "■" : "-"), null, 1);
+            status2.AddEntry($"{"Δ / ~ switchable:",-30}" + ((replies[0].Status2 & 0x40) != 0 ? "■" : "-"), null, 1);
             status2.Render();
             Console.WriteLine();
 

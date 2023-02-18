@@ -18,7 +18,7 @@ namespace ArtNet.Config.Pages {
 
         protected override IPage? HandleInputInternal(string? input) {
             if (input == "yes" || input == "y") {
-                _device.NetIf.Send(new ArtAddressPacket {
+                _device.NetIf.Send(new ArtAddressPacket(_reply) {
                     ShortName = _shortName,
                     LongName = _longName,
                     BindIndex = _boundIndex
